@@ -1,6 +1,8 @@
 import express from 'express'
 import createError from 'http-errors'
 import multer from 'multer'
+import firebaseApp from '../firebase.js' 
+import {getAuth,signInWithEmailAndPassword} from 'firebase/auth'
 
 // TODO: import Firebase dependencies
 
@@ -23,6 +25,15 @@ router.get('/auth', function (req, res, next) {
 router.post('/auth', function (req, res, next) {
   const { username, password } = req.body
   // TODO
+  signInWithEmailAndPassword(auth, username, password)
+  .then(() => {
+    res.redirect('/')
+
+  })
+  .catch(() => {
+    res.render('auth',{error:'identifiants incorrects'})
+
+  })
 })
 
 router.get('/logout', function (req, res, next) {
