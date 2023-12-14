@@ -10,6 +10,7 @@ import {getAuth,signInWithEmailAndPassword} from 'firebase/auth'
 
 const router = express.Router()
 const upload = multer()
+const auth = getAuth(firebaseApp)
 
 // TODO: create Firebase modules
 
