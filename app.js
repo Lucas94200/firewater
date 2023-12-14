@@ -13,6 +13,7 @@ import firebaseApp from './firebase.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
+const auth = getAuth(firebaseApp)
 
 // TODO: create Firebase module
 
