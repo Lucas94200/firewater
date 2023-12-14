@@ -3,6 +3,8 @@ import express from 'express'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import logger from 'morgan'
+import {getAuth} from 'firebase/auth'
+import firebaseApp from './firebase.js'
 
 // TODO: import Firebase dependencies
 
@@ -27,7 +29,7 @@ app.use(express.static('public'))
 
 // Auth middleware
 app.use(function (req, res, next) {
-  const user = null; // TODO
+  const user = auth.currentUser; // TODO
   if (req.url === '/auth' && user)
     return res.redirect('/')
 
